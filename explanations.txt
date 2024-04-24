@@ -1,0 +1,191 @@
+package com.jsookha.imadcalc2
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Button 
+
+class MainActivity : AppCompatActivity() {
+
+    var etNum1 : EditText? = null 
+    var etNum2 : EditText? = null 
+    var tvDisp : TextView? = null 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+	etNum1 = findViewById(R.id.etNum1)
+	etNum2 = findViewById(R.id.etNum2)
+	tvDisp = findViewById(R.id.tvDisp)
+
+	val btnAdd = findViewById<Button>(R.id.btnAdd)
+	btnAdd.setOnClickListener{add()}
+
+	val btnSub = findViewById<Button>(R.id.btnSub)
+	btnSub.setOnClickListener{sub()}
+
+	val btnMul = findViewById<Button>(R.id.btnMul)
+	btnMul.setOnClickListener{mul()}
+
+	val btnDiv = findViewById<Button>(R.id.btnDiv)
+	btnDiv.setOnClickListener{div()}
+
+	val btnSqr = findViewById<Button>(R.id.btnSqr)
+	btnSqr.setOnClickListener{sqr()}
+
+	val btnPow = findViewById<Button>(R.id.btnPow)
+	btnPow.setOnClickListener{pow()}
+    }
+
+    private fun add(){}
+    private fun sub(){}
+    private fun mul(){}
+    private fun div(){}
+    private fun sqr(){}
+    private fun pow(){
+	var intNum1 = etNum1?.text?.toString()?.toInt()
+	var intNum2 = etNum2?.text?.toString()?.toInt()
+	var intAnswer : Int = 1
+
+	for (i in 1..intNum2){
+		intAnswer = intAnswer * intNum1
+	}
+	
+    }
+}
+
+      	var intNum1  = etNum1?.toString()!!.toInt()   
+        var intNum2 = etNum2?.toString()?.toInt()
+        var intAnswer : Int = 1
+
+        for (i in 1..intNum2!!){
+            intAnswer = intAnswer * intNum1
+        }
+	tvDisp?.text = intAnswer.toString()
+
+
+Safe Call Operator (?):
+- The ? is the safe call operator in Kotlin.
+- It is used to handle null values safely.
+- When you use ?., it checks if the object on the left is null. If it’s not null, the expression continues; otherwise, it returns null.
+
+Example: etNum1?.toString()
+If etNum1 is not null, it calls the toString() method on it.
+If etNum1 is null, it returns null without throwing a NullPointerException.
+
+
+Not-Null Assertion Operator (!!):
+- The !! is the not-null assertion operator.
+- It tells the compiler that you are sure the value on the left is not null.
+- If the value is actually null, it will throw a NullPointerException at runtime.
+
+Example: etNum1?.toString()!!.toInt()
+First, it calls toString() on etNum1 (using the safe call operator).
+Then, it asserts that the result of toString() is not null (using !!).
+Finally, it converts the non-null string to an integer using toInt().
+
+Explanation of Your Code:
+var intNum1 = etNum1?.toString()!!.toInt()
+etNum1?.toString(): Safely converts etNum1 to a string. If etNum1 is null, it returns null.
+
+!!: Asserts that the result of toString() is not null.
+toInt(): Converts the non-null string to an integer.
+var intNum2 = etNum2?.toString()?.toInt()
+
+Similar to the first line, but it uses the safe call operator twice.
+The for loop then uses intNum2!! to assert that intNum2 is not null before iterating.
+
+Remember that using !! should be done with caution because it can lead to runtime exceptions if the value is unexpectedly null. It’s better to handle null values gracefully using safe calls (?) whenever possible.
+
+
+----------------------------------------------------------------------------------
+ 	val input1 = etNum1?.text?.toString()
+        val input2 = etNum2?.text?.toString()
+
+        if (input1.isNullOrEmpty() || input2.isNullOrEmpty()) {
+            tvDisp?.text = "Please enter valid numbers."
+            return
+        }
+
+        val intNum1 = input1.toInt()
+        val intNum2 = input2.toInt()
+        var intAnswer = 1
+
+        for (i in 1..intNum2) {
+            intAnswer *= intNum1
+        }
+
+        tvDisp?.text = intAnswer.toString()
+--------------------------------------------------------------------------------------
+    private fun add(){
+        val input1 = etNum1?.text?.toString()
+        val input2 = etNum2?.text?.toString()
+
+        if (input1.isNullOrEmpty() || input2.isNullOrEmpty()) {
+            tvDisp?.text = "Please enter valid numbers."
+            return
+        }
+
+        val intNum1 = input1.toInt()
+        val intNum2 = input2.toInt()
+        var intAnswer = 0
+
+        intAnswer = intNum1 + intNum2
+
+        tvDisp?.text = intAnswer.toString()
+    }
+---------------------------------------------------------------------------------------
+    private fun sub(){
+        val input1 = etNum1?.text?.toString()
+        val input2 = etNum2?.text?.toString()
+
+        if (input1.isNullOrEmpty() || input2.isNullOrEmpty()) {
+            tvDisp?.text = "Please enter valid numbers."
+            return
+        }
+
+        val intNum1 = input1.toInt()
+        val intNum2 = input2.toInt()
+        var intAnswer = 0
+
+        intAnswer = intNum1 - intNum2
+
+        tvDisp?.text = intAnswer.toString()
+    }
+    private fun mul(){
+        val input1 = etNum1?.text?.toString()
+        val input2 = etNum2?.text?.toString()
+
+        if (input1.isNullOrEmpty() || input2.isNullOrEmpty()) {
+            tvDisp?.text = "Please enter valid numbers."
+            return
+        }
+
+        val intNum1 = input1.toInt()
+        val intNum2 = input2.toInt()
+        var intAnswer = 0
+
+        intAnswer = intNum1 * intNum2
+
+        tvDisp?.text = intAnswer.toString()
+    }
+    private fun div(){
+        val input1 = etNum1?.text?.toString()
+        val input2 = etNum2?.text?.toString()
+
+        if (input1.isNullOrEmpty() || input2.isNullOrEmpty()) {
+            tvDisp?.text = "Please enter valid numbers."
+            return
+        }
+
+        val intNum1 = input1.toInt()
+        val intNum2 = input2.toInt()
+        var intAnswer = 0
+
+        intAnswer = intNum1 / intNum2
+
+        tvDisp?.text = intAnswer.toString()
+
+    }
