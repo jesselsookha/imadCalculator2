@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/btnAddToList"
@@ -24,7 +26,8 @@
     <TextView
         android:id="@+id/tvOutput"
         android:layout_width="match_parent"
-        android:layout_height="73dp" />
+        android:layout_height="73dp"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/btnTotal"
@@ -59,5 +62,6 @@
     <TextView
         android:id="@+id/tvOutput2"
         android:layout_width="match_parent"
-        android:layout_height="122dp" />
+        android:layout_height="122dp"
+        android:textSize="25sp" />
 </LinearLayout>
